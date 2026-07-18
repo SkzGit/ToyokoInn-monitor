@@ -1,0 +1,10 @@
+body{
+    font-family:sans-serif;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+h1{
+    text-align:center;
+}
