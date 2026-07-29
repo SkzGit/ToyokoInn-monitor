@@ -209,7 +209,7 @@ def main():
                     stay["date"],
                     str(stay["nights"]),
                     candidate["hotelId"],
-                    result["room_name"],
+                    candidate["roomSearch"],
                     result["smoking"],
                     str(stay["people"]),
                     str(stay["rooms"]),
