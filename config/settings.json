@@ -4,15 +4,15 @@
     "intervalMinutes": 1,
     "dates": [
         {
-            "date": "2026-07-28",
+            "date": "2026-10-20",
             "collapsed": false,
             "nights": 1,
             "people": 2,
             "rooms": 1,
             "candidates": [
                 {
-                    "hotelId": "00015",
-                    "roomSearch": "ツイン",
+                    "hotelId": "00186",
+                    "roomSearch": "ファミリーツイン",
                     "smoking": "指定なし"
                 }
             ]
