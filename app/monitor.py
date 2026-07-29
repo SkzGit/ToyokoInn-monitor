@@ -201,6 +201,7 @@ def main():
 
             if results and results[0].get("status") == "reservation_closed":
                 print("予約受付停止中")
+                write_log(f"{hotel_name}｜{room_display}｜予約受付停止中")
                 continue
 
             if not results:
