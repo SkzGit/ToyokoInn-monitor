@@ -410,6 +410,10 @@ function restoreConfig(config) {
 
 document.getElementById("saveSettings").addEventListener("click", saveSettings);
 
+document
+  .getElementById("gitPushButton")
+  .addEventListener("click", gitPush);
+
 function getConfig() {
 
   const settings = [];
@@ -585,6 +589,43 @@ document
       .click();
 
   });
+
+async function gitPush() {
+
+    if (!confirm("設定をGitHubへ反映しますか？")) {
+        return;
+    }
+
+    try {
+
+        const response = await fetch("/git-push", {
+            method: "POST"
+        });
+
+        const result = await response.json();
+
+        if (result.result === "ok") {
+
+            alert("GitHubへ反映しました。");
+
+        } else if (result.result === "no_changes") {
+
+            alert("変更はありません。");
+
+        } else {
+
+            alert("エラー：" + (result.message ?? ""));
+
+        }
+
+    } catch (err) {
+
+        console.error(err);
+        alert("GitHubへの反映に失敗しました。");
+
+    }
+
+}
 
 async function startMonitor() {
     if (!confirm("監視を開始しますか？")) {

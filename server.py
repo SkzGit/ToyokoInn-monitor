@@ -2,6 +2,18 @@ from pathlib import Path
 from datetime import datetime
 import json
 import subprocess
+GIT_EXE = (
+    Path.home()
+    / "AppData"
+    / "Local"
+    / "GitHubDesktop"
+    / "app-3.6.3"
+    / "resources"
+    / "app"
+    / "git"
+    / "cmd"
+    / "git.exe"
+)
 import logging
 
 logging.getLogger("werkzeug").setLevel(logging.ERROR)
@@ -187,6 +199,77 @@ def monitor_status():
     return {
         "running": running
     }
+
+@app.post("/git-push")
+def git_push():
+
+    try:
+
+        subprocess.run(
+            [str(GIT_EXE), "add", "config/settings.json"],
+            cwd=BASE_DIR,
+            check=True,
+        )
+
+        result = subprocess.run(
+            [
+                str(GIT_EXE),
+                "diff",
+                "--cached",
+                "--quiet",
+            ],
+            cwd=BASE_DIR,
+        )
+
+        if result.returncode == 0:
+            return {
+                "result": "no_changes"
+            }
+
+        subprocess.run(
+            [
+                str(GIT_EXE),
+                "commit",
+                "-m",
+                "Update settings",
+            ],
+            cwd=BASE_DIR,
+            check=True,
+        )
+
+        subprocess.run(
+            [
+                str(GIT_EXE),
+                "pull",
+                "--rebase",
+                "origin",
+                "main",
+            ],
+            cwd=BASE_DIR,
+            check=True,
+        )
+
+        subprocess.run(
+            [
+                str(GIT_EXE),
+                "push",
+                "origin",
+                "HEAD",
+            ],
+            cwd=BASE_DIR,
+            check=True,
+        )
+
+        return {
+            "result": "ok"
+        }
+
+    except subprocess.CalledProcessError as e:
+
+        return {
+            "result": "error",
+            "message": str(e),
+        }, 500
 
 @app.get("/logs")
 def get_logs():
