@@ -590,15 +590,10 @@ document
 
     console.log(result);
 
-    if (
-        result.add_success &&
-        result.commit_success &&
-        result.pull_success &&
-        result.push_success
-    ) {
-        alert("GitHubへ保存しました。");
+    if (result.success) {
+        alert(result.message);
     } else {
-        alert("GitHubへの保存に失敗しました。");
+        alert(result.message);
     }
 
 });
