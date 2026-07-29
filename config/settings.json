@@ -18,14 +18,14 @@
             ]
         },
         {
-            "date": "2026-08-27",
+            "date": "2026-08-18",
             "collapsed": false,
             "nights": 1,
             "people": 2,
             "rooms": 1,
             "candidates": [
                 {
-                    "hotelId": "00326",
+                    "hotelId": "00015",
                     "roomSearch": "ツイン",
                     "smoking": "指定なし"
                 }
