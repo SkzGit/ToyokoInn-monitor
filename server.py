@@ -227,10 +227,17 @@ def git_push():
             "Auto update",
         )
 
-        commit_ok = (
-            commit.returncode == 0
-            or "nothing to commit" in commit.stdout
-        )        
+        changed = commit.returncode == 0
+
+        no_changes = (
+            "nothing to commit" in commit.stdout
+        )
+
+        if not changed and not no_changes:
+            return jsonify({
+                "success": False,
+                "message": commit.stderr or commit.stdout,
+            })
 
         pull = run_git(
             git,
@@ -238,22 +245,29 @@ def git_push():
             "--rebase",
         )
 
+        if pull.returncode != 0:
+            return jsonify({
+                "success": False,
+                "message": pull.stderr or pull.stdout,
+            })
+
         push = run_git(git, "push")
 
+        if push.returncode != 0:
+            return jsonify({
+                "success": False,
+                "message": push.stderr or push.stdout,
+            })
+
+        if no_changes:
+            return jsonify({
+                "success": True,
+                "message": "変更はありませんでした。",
+            })
+
         return jsonify({
-            "add_success": add.returncode == 0,
-            "commit_success": commit_ok,
-            "pull_success": pull.returncode == 0,
-            "push_success": push.returncode == 0,
-
-            "commit_stdout": commit.stdout,
-            "commit_stderr": commit.stderr,
-
-            "pull_stdout": pull.stdout,
-            "pull_stderr": pull.stderr,
-
-            "push_stdout": push.stdout,
-            "push_stderr": push.stderr,
+            "success": True,
+            "message": "GitHubへ保存しました。",
         })
 
     except Exception as e:
