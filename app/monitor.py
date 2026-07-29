@@ -382,4 +382,4 @@ def run():
         time.sleep(interval_seconds)
 
 if __name__ == "__main__":
-    run()
+    main()
