@@ -1,7 +1,7 @@
 {
     "version": 1,
     "intervalHours": 0,
-    "intervalMinutes": 5,
+    "intervalMinutes": 1,
     "dates": [
         {
             "date": "2026-07-28",

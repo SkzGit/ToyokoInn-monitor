@@ -218,10 +218,10 @@ function initializeIntervalSelects() {
 
     hourSelect.innerHTML = createNumberOptions(23, 0, 0);
 
-    const minuteValues = [0, 5, 10, 15, 20, 30, 45];
+    const minuteValues = Array.from({ length: 60 }, (_, i) => i);
 
     minuteSelect.innerHTML = minuteValues.map(m => `
-        <option value="${m}" ${m === 30 ? "selected" : ""}>
+        <option value="${m}" ${m === 5 ? "selected" : ""}>
             ${m}
         </option>
     `).join("");
