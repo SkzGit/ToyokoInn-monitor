@@ -227,6 +227,11 @@ def git_push():
             "Auto update",
         )
 
+        commit_ok = (
+            commit.returncode == 0
+            or "nothing to commit" in commit.stdout
+        )        
+
         pull = run_git(
             git,
             "pull",
@@ -237,7 +242,7 @@ def git_push():
 
         return jsonify({
             "add_success": add.returncode == 0,
-            "commit_success": commit.returncode == 0,
+            "commit_success": commit_ok,
             "pull_success": pull.returncode == 0,
             "push_success": push.returncode == 0,
 
