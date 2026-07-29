@@ -277,8 +277,7 @@ const title = document.createElement("h3");
 
   const delDate = document.createElement("button");
   delDate.textContent = "×";
-  delDate.style.width = "40px";
-  delDate.style.marginLeft = "10px";
+  delDate.className = "removeDateButton";
 
   delDate.onclick = () => {
       if (!confirm("この宿泊日と、その候補をすべて削除しますか？")) {

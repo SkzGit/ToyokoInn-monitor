@@ -135,10 +135,23 @@ button:disabled{
 ------------------------------ */
 
 /* 設定関係 */
-#saveSettings,
-#exportSettings,
+/* 保存 */
+#saveSettings{
+    background:#4CAF50;
+}
+
+#gitPush{
+    background:#2E7D32;
+}
+
+/* バックアップ */
+#exportSettings{
+    background:#A67C52;
+}
+
+/* 復元 */
 #importSettings{
-    background:#607d8b;
+    background:#E69500;
 }
 
 /* 追加 */
@@ -153,7 +166,7 @@ button:disabled{
 }
 
 #stopMonitor{
-    background:#df7b7b;
+    background:#8B2E3A;
 }
 
 /* ------------------------------
@@ -193,7 +206,7 @@ button:disabled{
 
 .buttonGroup{
     display:grid;
-    grid-template-columns:1fr 1fr 1fr;
+    grid-template-columns:1fr 1fr;
     gap:12px;
     margin-top:18px;
 }
@@ -460,4 +473,21 @@ button:disabled{
 
 .date-header h3 {
     margin: 0;
+}
+
+.removeDateButton{
+    width:40px;
+    height:40px;
+    margin-left:10px;
+
+    background:#D9534F;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.removeDateButton:hover{
+    background:#C9302C;
 }
