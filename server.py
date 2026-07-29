@@ -230,12 +230,27 @@ def git_push():
     text=True,
     )
 
+    push = subprocess.run(
+        [git, "push"],
+        cwd=BASE_DIR,
+        capture_output=True,
+        text=True,
+    )
+
     return jsonify({
         "add_success": add.returncode == 0,
         "commit_success": commit.returncode == 0,
         "pull_success": pull.returncode == 0,
+        "push_success": push.returncode == 0,
+
+        "commit_stdout": commit.stdout,
+        "commit_stderr": commit.stderr,
+
         "pull_stdout": pull.stdout,
         "pull_stderr": pull.stderr,
+
+        "push_stdout": push.stdout,
+        "push_stderr": push.stderr,
     })
 
 @app.get("/logs")
