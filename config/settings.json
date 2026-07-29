@@ -1,26 +1,11 @@
 {
     "version": 1,
-    "monitor_enabled": true,
     "intervalHours": 1,
     "intervalMinutes": 5,
     "dates": [
         {
-            "date": "2026-09-14",
-            "collapsed": true,
-            "nights": 1,
-            "people": 2,
-            "rooms": 1,
-            "candidates": [
-                {
-                    "hotelId": "00121",
-                    "roomSearch": "ツイン",
-                    "smoking": "指定なし"
-                }
-            ]
-        },
-        {
             "date": "2026-07-29",
-            "collapsed": true,
+            "collapsed": false,
             "nights": 1,
             "people": 2,
             "rooms": 1,
@@ -28,6 +13,20 @@
                 {
                     "hotelId": "00078",
                     "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                }
+            ]
+        },
+        {
+            "date": "2026-08-27",
+            "collapsed": false,
+            "nights": 1,
+            "people": 2,
+            "rooms": 1,
+            "candidates": [
+                {
+                    "hotelId": "00326",
+                    "roomSearch": "ツイン",
                     "smoking": "指定なし"
                 }
             ]
