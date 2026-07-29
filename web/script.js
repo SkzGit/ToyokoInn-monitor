@@ -737,7 +737,7 @@ async function updateHistory() {
 
     history.innerHTML = "";
 
-    result.history.forEach(item => {
+    [result.result.history].reverse().forEach(item => {
 
         const card = document.createElement("div");
 

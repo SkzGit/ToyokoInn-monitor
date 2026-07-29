@@ -2,6 +2,9 @@ from pathlib import Path
 from datetime import datetime
 import json
 import logging
+import subprocess
+import shutil
+import os
 
 logging.getLogger("werkzeug").setLevel(logging.ERROR)
 
@@ -10,6 +13,7 @@ from flask import (
     request,
     send_from_directory,
     send_file,
+    jsonify,
 )
 
 app = Flask(__name__)
@@ -21,6 +25,20 @@ HISTORY_FILE = BASE_DIR / "data" / "history.json"
 STATE_FILE = BASE_DIR / "data" / "state.json"
 
 monitor_process = None
+
+def find_git():
+    candidates = [
+        shutil.which("git"),
+        shutil.which("git.exe"),
+        r"C:\Program Files\Git\cmd\git.exe",
+        r"C:\Program Files (x86)\Git\cmd\git.exe",
+    ]
+
+    for git in candidates:
+        if git and os.path.exists(git):
+            return git
+
+    raise FileNotFoundError("Git が見つかりません。")
 
 def clear_log():
 
@@ -186,6 +204,31 @@ def monitor_status():
     return {
         "running": running
     }
+
+@app.post("/git-push")
+def git_push():
+    git = find_git()
+
+    add = subprocess.run(
+        [git, "add", "."],
+        cwd=BASE_DIR,
+        capture_output=True,
+        text=True,
+    )
+
+    commit = subprocess.run(
+        [git, "commit", "-m", "Auto update"],
+        cwd=BASE_DIR,
+        capture_output=True,
+        text=True,
+    )
+
+    return jsonify({
+        "add_success": add.returncode == 0,
+        "commit_success": commit.returncode == 0,
+        "commit_stdout": commit.stdout,
+        "commit_stderr": commit.stderr,
+    })
 
 @app.get("/logs")
 def get_logs():
