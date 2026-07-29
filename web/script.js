@@ -70,8 +70,12 @@ function updateDateTitle(section) {
     const mark =
         content.style.display === "none" ? "▶" : "▼";
 
+    const week = ["日", "月", "火", "水", "木", "金", "土"];
+    const d = new Date(date);
+    const weekday = week[d.getDay()];
+
     title.textContent =
-        `${mark} ${date}（候補${count}件）`;
+        `${mark} ${date}（${weekday}）　候補${count}件`;
 }
 
 function createCandidateElement(hotelId, roomSearch) {
@@ -756,14 +760,15 @@ async function updateHistory() {
 
     history.innerHTML = "";
 
-    (result.history ?? []).slice().reverse().forEach(item => {
+    (result.history ?? []).slice().forEach(item => {
 
         const card = document.createElement("div");
 
         card.className = "historyCard";
 
         card.innerHTML = `
-            <div><strong>${item.time}</strong></div>
+            <div>🕒 ${item.time}</div>
+            <div>📅 ${item.date}</div>
             <div>🏨 ${item.hotel}</div>
             <div>🛏 ${item.room}</div>
             <div>${item.smoking === "禁煙" ? "🚭" : "🚬"} ${item.smoking}</div>

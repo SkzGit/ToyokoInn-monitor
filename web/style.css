@@ -491,3 +491,10 @@ button:disabled{
 .removeDateButton:hover{
     background:#C9302C;
 }
+
+.historyTime{
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:12px;
+    color:#37474F;
+}

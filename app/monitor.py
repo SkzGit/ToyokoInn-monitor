@@ -230,6 +230,12 @@ def main():
                     result,
                 )
 
+                weekdays = ["月", "火", "水", "木", "金", "土", "日"]
+
+                checkin = datetime.strptime(stay["date"], "%Y-%m-%d")
+
+                checkin_text = f"{stay['date']}（{weekdays[checkin.weekday()]}）"
+
                 if not previous:
                     print(
                         f"★ 新しく空室が出ました！（{result['smoking']}）"
@@ -248,13 +254,14 @@ def main():
                         0,
                         {
                             "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                            "date": checkin_text,
                             "hotel": hotel_name,
                             "room": room_display,
                             "smoking": result["smoking"],
                             "price": result["price"],
                             "remaining": result["remaining"],
                         },
-                    )                    
+                    )                   
 
                 else:
                     print(
@@ -371,7 +378,20 @@ def run():
 
         interval_seconds = interval_hours * 3600 + interval_minutes * 60
 
-        main()
+        try:
+            main()
+
+        except Exception as e:
+            message = (
+                "==================================================\n"
+                "監視中にエラーが発生しました\n"
+                f"エラー種類 : {type(e).__name__}\n"
+                f"内容       : {e}\n"
+                "=================================================="
+            )
+
+            print(message)
+            write_log(message)
 
         print()
 
