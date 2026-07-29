@@ -215,40 +215,47 @@ def monitor_status():
 
 @app.post("/git-push")
 def git_push():
-    git = find_git()
+    try:
+        git = find_git()
 
-    add = run_git(git, "add", ".")
+        add = run_git(git, "add", ".")
 
-    commit = run_git(
-        git,
-        "commit",
-        "-m",
-        "Auto update",
-    )
+        commit = run_git(
+            git,
+            "commit",
+            "-m",
+            "Auto update",
+        )
 
-    pull = run_git(
-        git,
-        "pull",
-        "--rebase",
-    )
+        pull = run_git(
+            git,
+            "pull",
+            "--rebase",
+        )
 
-    push = run_git(git, "push")
+        push = run_git(git, "push")
 
-    return jsonify({
-        "add_success": add.returncode == 0,
-        "commit_success": commit.returncode == 0,
-        "pull_success": pull.returncode == 0,
-        "push_success": push.returncode == 0,
+        return jsonify({
+            "add_success": add.returncode == 0,
+            "commit_success": commit.returncode == 0,
+            "pull_success": pull.returncode == 0,
+            "push_success": push.returncode == 0,
 
-        "commit_stdout": commit.stdout,
-        "commit_stderr": commit.stderr,
+            "commit_stdout": commit.stdout,
+            "commit_stderr": commit.stderr,
 
-        "pull_stdout": pull.stdout,
-        "pull_stderr": pull.stderr,
+            "pull_stdout": pull.stdout,
+            "pull_stderr": pull.stderr,
 
-        "push_stdout": push.stdout,
-        "push_stderr": push.stderr,
-    })
+            "push_stdout": push.stdout,
+            "push_stderr": push.stderr,
+        })
+
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "message": str(e),
+        })
 
 @app.get("/logs")
 def get_logs():
