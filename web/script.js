@@ -577,14 +577,28 @@ document
   .addEventListener("click", exportSettings);
 
 document
+  .getElementById("gitPush")
+  .addEventListener("click", async () => {
+
+    console.log("GitHubへ保存ボタンが押されました");
+
+    const response = await fetch("/git-push", {
+      method: "POST",
+    });
+
+    const result = await response.json();
+
+    console.log(result);
+
+});
+
+document
   .getElementById("importSettings")
   .addEventListener("click", () => {
-
     document
       .getElementById("importFile")
       .click();
-
-  });
+});
 
 async function startMonitor() {
     if (!confirm("監視を開始しますか？")) {
@@ -737,7 +751,7 @@ async function updateHistory() {
 
     history.innerHTML = "";
 
-    [result.result.history].reverse().forEach(item => {
+    (result.history ?? []).slice().reverse().forEach(item => {
 
         const card = document.createElement("div");
 
