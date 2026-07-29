@@ -43,7 +43,7 @@ def check_room_status(url, stay, candidate):
         try:
 
             browser = p.chromium.launch(
-                headless=False,
+                headless=True,
             )
 
             page = browser.new_page(
