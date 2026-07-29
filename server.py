@@ -40,6 +40,14 @@ def find_git():
 
     raise FileNotFoundError("Git が見つかりません。")
 
+def run_git(git, *args):
+    return subprocess.run(
+        [git, *args],
+        cwd=BASE_DIR,
+        capture_output=True,
+        text=True,
+    )
+
 def clear_log():
 
     log_file = BASE_DIR / "data" / "monitor.log"
@@ -209,33 +217,22 @@ def monitor_status():
 def git_push():
     git = find_git()
 
-    add = subprocess.run(
-        [git, "add", "."],
-        cwd=BASE_DIR,
-        capture_output=True,
-        text=True,
+    add = run_git(git, "add", ".")
+
+    commit = run_git(
+        git,
+        "commit",
+        "-m",
+        "Auto update",
     )
 
-    commit = subprocess.run(
-        [git, "commit", "-m", "Auto update"],
-        cwd=BASE_DIR,
-        capture_output=True,
-        text=True,
+    pull = run_git(
+        git,
+        "pull",
+        "--rebase",
     )
 
-    pull = subprocess.run(
-    [git, "pull", "--rebase"],
-    cwd=BASE_DIR,
-    capture_output=True,
-    text=True,
-    )
-
-    push = subprocess.run(
-        [git, "push"],
-        cwd=BASE_DIR,
-        capture_output=True,
-        text=True,
-    )
+    push = run_git(git, "push")
 
     return jsonify({
         "add_success": add.returncode == 0,
