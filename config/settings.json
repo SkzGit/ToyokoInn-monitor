@@ -4,20 +4,6 @@
     "intervalMinutes": 5,
     "dates": [
         {
-            "date": "2026-07-29",
-            "collapsed": false,
-            "nights": 1,
-            "people": 2,
-            "rooms": 1,
-            "candidates": [
-                {
-                    "hotelId": "00078",
-                    "roomSearch": "デラックスツイン",
-                    "smoking": "指定なし"
-                }
-            ]
-        },
-        {
             "date": "2026-08-18",
             "collapsed": false,
             "nights": 1,

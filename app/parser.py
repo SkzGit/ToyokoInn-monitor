@@ -56,6 +56,17 @@ def check_room_status(url, stay, candidate):
                 timeout=60000,
             )
 
+            reservation_button = page.locator(
+                "button:has-text('予約受付停止中')"
+            )
+
+            if reservation_button.count() > 0:
+                return [
+                    {
+                        "status": "reservation_closed"
+                    }
+                ]
+
             checkin = datetime.strptime(
                 stay["date"],
                 "%Y-%m-%d",
