@@ -11,16 +11,93 @@
 
 <h1>東横INN 空室監視</h1>
 
-<label>ホテル</label>
-<select id="hotelSelect">
-<option>読み込み中...</option>
-</select>
+<div class="searchCard">
 
-<label>部屋タイプ</label>
-<select id="roomSelect">
-<option>ホテルを選択してください</option>
-</select>
+<h2>🔍 検索条件</h2>
 
+<div class="dateRow">
+
+    <div class="dateItem">
+        <label>📅 宿泊日</label>
+        <input type="date" id="stayDate">
+    </div>
+
+    <button id="addDate">➕ 宿泊日を追加</button>
+
+</div>
+
+<div class="searchRow">
+
+    <div class="hotelItem">
+        <label>🏨 ホテル</label>
+        <select id="hotelSelect">
+            <option>読み込み中...</option>
+        </select>
+    </div>
+
+    <div class="roomItem">
+        <label>🛏 部屋タイプ</label>
+        <select id="roomSelect">
+            <option>ホテルを選択してください</option>
+        </select>
+    </div>
+
+    <div class="buttonItem">
+        <button id="addTarget">➕ 候補を追加</button>
+    </div>
+
+</div>
+
+</div>
+
+<h2>📋 候補一覧</h2>
+
+<div id="targetList"></div>
+
+<div class="controlPanel">
+    <h2>⚙ 操作</h2>
+    <div class="buttonGroup">
+        <button id="saveSettings">💾 設定を保存</button>
+        <button id="exportSettings">📦 バックアップ</button>
+        <button id="importSettings">📥 復元</button>
+    </div>
+
+    <div class="buttonGroup">
+        <button id="startMonitor">▶ 監視開始</button>
+        <button id="stopMonitor">■ 監視停止</button>
+    </div>
+
+    <div class="intervalPanel">
+
+    <label for="intervalHours">監視間隔</label>
+
+    <select id="intervalHours"></select>
+    <span>時間</span>
+
+    <select id="intervalMinutes"></select>
+    <span>分</span>
+
+</div>
+
+<div id="monitorStatus">
+  状態：⚪ 停止中
+</div>
+
+<h3>監視ログ</h3>
+<div id="monitorLog"></div>
+
+<h3>通知履歴</h3>
+<div id="history"></div>
+
+</div>
+
+<input
+    type="file"
+    id="importFile"
+    accept=".json"
+    hidden>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 <script src="script.js"></script>
 
 </body>

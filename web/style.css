@@ -1,10 +1,463 @@
 body{
+
     font-family:sans-serif;
+
     max-width:900px;
+
     margin:auto;
-    padding:20px;
+
+    padding:24px;
+
+    background:#eceff1;
+
 }
 
 h1{
+
     text-align:center;
+
+    color:#263238;
+
+    margin-bottom:30px;
+
+}
+
+label{
+    display:block;
+    margin-top:16px;
+    margin-bottom:6px;
+    font-weight:bold;
+}
+
+input,
+select,
+button{
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    box-sizing:border-box;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    margin-top:0;
+    cursor:pointer;
+}
+
+h3{
+    display:inline-block;
+    margin:0;
+    color:#37474f;
+}
+
+.date-settings{
+    display:grid;
+    grid-template-columns:
+        auto 80px
+        auto 80px
+        auto 80px
+        auto 140px;
+    gap:10px;
+    align-items:center;
+    margin:12px 0;
+}
+
+.date-settings label{
+    margin:0;
+    font-weight:bold;
+}
+
+.candidate{
+    border:1px solid #d0d7de;
+    border-radius:10px;
+    padding:16px;
+    margin:14px 0;
+    background:white;
+}
+
+.candidate:hover{
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.candidate label{
+    display:inline-block;
+    width:80px;
+    font-weight:bold;
+}
+
+.candidate div,
+.candidate select{
+    margin-bottom:8px;
+}
+
+#monitorLog {
+    height: 250px;
+    overflow-y: auto;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    background: #fafafa;
+
+    padding: 8px;
+
+    font-family: Consolas, monospace;
+    font-size: 13px;
+
+    white-space: pre-wrap;
+}
+
+/* ------------------------------
+   ボタンデザイン
+------------------------------ */
+
+button{
+    height:52px;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    transition:0.2s;
+    color:white;
+}
+
+button:hover:not(:disabled){
+    filter:brightness(90%);
+}
+
+button:disabled{
+    opacity:0.45;
+    cursor:not-allowed;
+}
+
+/* ------------------------------
+   ボタン色
+------------------------------ */
+
+/* 設定関係 */
+#saveSettings,
+#exportSettings,
+#importSettings{
+    background:#607d8b;
+}
+
+/* 追加 */
+#addDate,
+#addTarget{
+    background:#43a047;
+}
+
+/* 監視 */
+#startMonitor{
+    background:#5b9bd5;
+}
+
+#stopMonitor{
+    background:#df7b7b;
+}
+
+/* ------------------------------
+   宿泊日カード
+------------------------------ */
+
+#targetList>div{
+    background:white;
+    border:1px solid #d9dee3;
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:24px;
+    box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+#targetList>div>button{
+    width:40px;
+    height:40px;
+    padding:0;
+    margin-left:12px;
+    background:#d32f2f;
+}
+
+.date-settings{
+    background:#f8fafc;
+    border-radius:8px;
+    padding:14px;
+}
+
+.date-settings select{
+    margin-bottom:4px;
+}
+
+/* ------------------------------
+   ボタンレイアウト
+------------------------------ */
+
+.buttonGroup{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:12px;
+    margin-top:18px;
+}
+
+/* ------------------------------
+   操作パネル
+------------------------------ */
+
+.controlPanel{
+    background:white;
+    border:1px solid #d9dee3;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:28px;
+    box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+.controlPanel h2{
+    margin-top:0;
+    margin-bottom:20px;
+    color:#37474f;
+    font-size:20px;
+}
+
+.buttonGroup{
+    margin-bottom:16px;
+}
+
+/* ------------------------------
+  候補カードのボタン
+------------------------------ */
+.candidateButtons{
+    display:flex;
+    gap:10px;
+    margin-top:12px;
+}
+
+.candidateButtons button{
+  flex:1;
+  margin:0;
+  height:42px;
+}
+
+.candidateButtons button:nth-child(1){
+    background:#74c69d;
+}
+
+.candidateButtons button:nth-child(2){
+    background:#74c69d;
+}
+
+.candidateButtons button:nth-child(3){
+    background:#d96a6a;
+}
+
+/* ------------------------------
+   候補カード本文
+------------------------------ */
+
+.candidate .hotel,
+.candidate .room{
+    background:white;
+    border:1px solid #d9dee3;
+    border-radius:6px;
+    padding:10px;
+    margin-bottom:12px;
+}
+
+.candidate label{
+    color:#455a64;
+    font-size:14px;
+}
+
+.smoking{
+    margin-bottom:12px;
+}
+
+#history{
+    margin-top:15px;
+}
+
+.historyCard{
+    background:#ffffff;
+    border:1px solid #cccccc;
+    border-radius:8px;
+    padding:12px;
+    margin-bottom:12px;
+    line-height:1.7;
+    box-shadow:0 2px 4px rgba(0,0,0,.08);
+}
+
+.historyCard strong{
+    font-size:15px;
+}
+
+.historyCard div:first-child{
+    margin-bottom:8px;
+    color:#666;
+}
+
+.candidate {
+    background: #e8f2ff;
+    border: 1px solid #7fb3ff;
+    border-left: 6px solid #1976d2;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 14px 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,.08);
+}
+
+.candidateButtons {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.candidateGrid{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:10px 12px;
+    align-items:center;
+}
+
+.candidateGrid label{
+    margin:0;
+    width:auto;
+}
+
+.candidateGrid .hotel,
+.candidateGrid .room,
+.candidateGrid .smoking{
+    margin:0;
+}
+
+.date-settings select{
+    margin:0;
+}
+
+.intervalPanel{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:12px;
+    margin-bottom:12px;
+}
+
+.intervalPanel label{
+    font-weight:bold;
+}
+
+.intervalPanel select{
+    width:70px;
+}
+
+.searchCard{
+    background:#f3faf4;
+    border:1px solid #cfe8d2;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:24px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+
+.searchRow{
+    display:flex;
+    gap:16px;
+    margin:16px 0;
+}
+
+#addDate,
+#addTarget{
+    background:#6bbf73;
+}
+
+.dateRow{
+    display:flex;
+    align-items:flex-end;
+    gap:16px;
+    margin-bottom:16px;
+}
+
+.dateItem{
+    flex:1 1 auto;
+}
+
+.dateItem label{
+    display:block;
+    margin-bottom:6px;
+}
+
+.dateItem input{
+    width:100%;
+    box-sizing:border-box;
+}
+
+.dateRow #addDate{
+    flex:0 0 180px;
+    white-space:nowrap;
+}
+
+.hotelItem{
+    flex:4;
+}
+
+.roomItem{
+    flex:5;
+}
+
+.buttonItem{
+    flex:0 0 180px;
+    display:flex;
+    align-items:stretch;
+    align-self:flex-end;
+}
+
+.buttonItem button{
+    width:100%;
+    height:40px;
+    box-sizing:border-box;
+}
+
+.hotelItem label,
+.roomItem label{
+    display:block;
+    margin-bottom:6px;
+}
+
+.date-settings{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    padding:14px;
+    background:#f8fafc;
+    border-radius:8px;
+}
+
+.settingItem{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.settingItem label{
+    margin:0;
+    white-space:nowrap;
+    font-weight:bold;
+}
+
+.settingItem select{
+    width:80px;
+    margin:0;
+}
+
+.modeItem select{
+    width:140px;
+}
+
+.date-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 8px 0;
+}
+
+.date-header h3 {
+    margin: 0;
 }

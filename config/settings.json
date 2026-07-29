@@ -1,5 +1,45 @@
 {
-  "notificationMode": "priority",
-  "monitorEnabled": true,
-  "targets": []
+    "version": 1,
+    "intervalHours": 1,
+    "intervalMinutes": 5,
+    "dates": [
+        {
+            "date": "2026-09-14",
+            "collapsed": true,
+            "nights": 1,
+            "people": 2,
+            "rooms": 1,
+            "candidates": [
+                {
+                    "hotelId": "00121",
+                    "roomSearch": "ツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00078",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00244",
+                    "roomSearch": "ファミリーツインA",
+                    "smoking": "指定なし"
+                }
+            ]
+        },
+        {
+            "date": "2026-07-29",
+            "collapsed": true,
+            "nights": 1,
+            "people": 2,
+            "rooms": 1,
+            "candidates": [
+                {
+                    "hotelId": "00078",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                }
+            ]
+        }
+    ]
 }
