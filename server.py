@@ -223,11 +223,19 @@ def git_push():
         text=True,
     )
 
+    pull = subprocess.run(
+    [git, "pull", "--rebase"],
+    cwd=BASE_DIR,
+    capture_output=True,
+    text=True,
+    )
+
     return jsonify({
         "add_success": add.returncode == 0,
         "commit_success": commit.returncode == 0,
-        "commit_stdout": commit.stdout,
-        "commit_stderr": commit.stderr,
+        "pull_success": pull.returncode == 0,
+        "pull_stdout": pull.stdout,
+        "pull_stderr": pull.stderr,
     })
 
 @app.get("/logs")
