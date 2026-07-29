@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "monitor_enabled": true,
     "intervalHours": 1,
     "intervalMinutes": 5,
     "dates": [

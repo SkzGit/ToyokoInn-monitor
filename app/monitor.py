@@ -18,6 +18,12 @@ def load_json(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
 
+def is_monitor_enabled(settings):
+    return settings.get("monitor_enabled", True)
+
+def is_monitor_enabled(settings):
+    return settings.get("monitor_enabled", True)
+
 def load_state():
 
     if not STATE_FILE.exists():
@@ -121,6 +127,15 @@ def save_history(history):
 def main():
 
     settings = load_json(SETTINGS_FILE)
+
+    if not is_monitor_enabled(settings):
+        print("monitor_enabled=false のため監視を終了します。")
+        return
+
+    if not is_monitor_enabled(settings):
+        print("monitor_enabled=false のため監視を終了します。")
+        return
+
     hotels = load_json(HOTELS_FILE)
 
     state = load_state()

@@ -36,6 +36,6 @@ jobs:
 
       - name: Run monitor
         run: |
-          python app/monitor.py
+          python -m app.monitor
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
