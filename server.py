@@ -99,7 +99,12 @@ def load_settings():
 @app.post("/settings")
 def save_settings():
 
+    current = load_settings_file()
+
     data = request.get_json()
+
+    if "monitor_enabled" not in data:
+        data["monitor_enabled"] = current.get("monitor_enabled", False)
 
     with open(
         CONFIG_FILE,
