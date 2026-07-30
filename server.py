@@ -103,8 +103,7 @@ def save_settings():
 
     data = request.get_json()
 
-    if "monitor_enabled" not in data:
-        data["monitor_enabled"] = current.get("monitor_enabled", False)
+    current.update(data)
 
     with open(
         CONFIG_FILE,
@@ -113,7 +112,7 @@ def save_settings():
     ) as f:
 
         json.dump(
-            data,
+            current,
             f,
             ensure_ascii=False,
             indent=4,
