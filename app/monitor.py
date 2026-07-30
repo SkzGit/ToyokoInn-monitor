@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from app.notify import notify
 import json
 import time
+import os
 from pathlib import Path
 
 from app.parser import check_room_status
@@ -17,9 +18,6 @@ HISTORY_FILE = BASE_DIR / "data" / "history.json"
 def load_json(path):
     with open(path, encoding="utf-8") as f:
         return json.load(f)
-
-def is_monitor_enabled(settings):
-    return settings.get("monitor_enabled", True)
 
 def is_monitor_enabled(settings):
     return settings.get("monitor_enabled", True)
@@ -127,10 +125,6 @@ def save_history(history):
 def main():
 
     settings = load_json(SETTINGS_FILE)
-
-    if not is_monitor_enabled(settings):
-        print("monitor_enabled=false のため監視を終了します。")
-        return
 
     if not is_monitor_enabled(settings):
         print("monitor_enabled=false のため監視を終了します。")
@@ -367,7 +361,29 @@ def build_message(
 
     return message
 
+def execute_once():
+    try:
+        main()
+
+    except Exception as e:
+        message = (
+            "==================================================\n"
+            "監視中にエラーが発生しました\n"
+            f"エラー種類 : {type(e).__name__}\n"
+            f"内容       : {e}\n"
+            "=================================================="
+        )
+
+        print(message)
+        write_log(message)
+
 def run():
+
+    github_actions = os.getenv("GITHUB_ACTIONS") == "true"
+
+    if github_actions:
+        execute_once()
+        return
 
     while True:
 
@@ -378,20 +394,7 @@ def run():
 
         interval_seconds = interval_hours * 3600 + interval_minutes * 60
 
-        try:
-            main()
-
-        except Exception as e:
-            message = (
-                "==================================================\n"
-                "監視中にエラーが発生しました\n"
-                f"エラー種類 : {type(e).__name__}\n"
-                f"内容       : {e}\n"
-                "=================================================="
-            )
-
-            print(message)
-            write_log(message)
+        execute_once()
 
         print()
 

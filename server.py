@@ -82,6 +82,14 @@ def data_files(path):
 def static_files(path):
     return send_from_directory("web", path)
 
+def load_settings_file():
+    with open(CONFIG_FILE, encoding="utf-8") as f:
+        return json.load(f)
+
+def save_settings_file(data):
+    with open(CONFIG_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
 @app.get("/settings")
 def load_settings():
 
@@ -170,6 +178,10 @@ def start_monitor():
                 indent=4,
             )
 
+    settings = load_settings_file()
+    settings["monitor_enabled"] = True
+    save_settings_file(settings)
+
     monitor_process = subprocess.Popen(
         ["python", "-m", "app.monitor"],
         cwd=BASE_DIR,
@@ -188,6 +200,10 @@ def stop_monitor():
         return {
             "result": "not_running"
         }
+
+    settings = load_settings_file()
+    settings["monitor_enabled"] = False
+    save_settings_file(settings)
 
     monitor_process.terminate()
 
