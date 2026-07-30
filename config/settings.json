@@ -6,9 +6,9 @@
         {
             "date": "2026-08-04",
             "collapsed": false,
-            "nights": 1,
+            "nights": 2,
             "people": 2,
-            "rooms": 1,
+            "rooms": 2,
             "candidates": [
                 {
                     "hotelId": "00097",
