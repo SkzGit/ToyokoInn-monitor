@@ -46,5 +46,5 @@
             ]
         }
     ],
-    "monitor_enabled": true
+    "monitor_enabled": false
 }
