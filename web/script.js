@@ -646,6 +646,8 @@ async function startMonitor() {
         });
 
         const pushResult = await pushResponse.json();
+        
+        console.log(pushResult);
 
         if (!pushResult.success) {
             alert(pushResult.message);
