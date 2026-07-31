@@ -99,9 +99,16 @@ def load_settings():
 @app.post("/settings")
 def save_settings():
 
-    current = load_settings_file()
+    print("save_settings called")
 
+    with open(CONFIG_FILE, encoding="utf-8") as f:
+        print("raw file =", f.read())
+
+    current = load_settings_file()
     data = request.get_json()
+
+    print("current =", current)
+    print("data =", data)
 
     current.update(data)
 

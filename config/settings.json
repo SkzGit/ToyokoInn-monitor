@@ -7,7 +7,7 @@
             "date": "2026-08-04",
             "collapsed": false,
             "nights": 1,
-            "people": 2,
+            "people": 4,
             "rooms": 1,
             "candidates": [
                 {
@@ -17,5 +17,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "monitor_enabled": false
 }
