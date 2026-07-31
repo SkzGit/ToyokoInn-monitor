@@ -16,6 +16,34 @@
                     "smoking": "指定なし"
                 }
             ]
+        },
+        {
+            "date": "2026-08-19",
+            "collapsed": false,
+            "nights": 1,
+            "people": 2,
+            "rooms": 1,
+            "candidates": [
+                {
+                    "hotelId": "00097",
+                    "roomSearch": "ツイン",
+                    "smoking": "指定なし"
+                }
+            ]
+        },
+        {
+            "date": "2026-08-20",
+            "collapsed": false,
+            "nights": 1,
+            "people": 2,
+            "rooms": 1,
+            "candidates": [
+                {
+                    "hotelId": "00097",
+                    "roomSearch": "ツイン",
+                    "smoking": "指定なし"
+                }
+            ]
         }
     ],
     "monitor_enabled": false
