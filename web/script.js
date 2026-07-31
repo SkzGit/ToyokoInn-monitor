@@ -230,6 +230,22 @@ function initializeIntervalSelects() {
         </option>
     `).join("");
 
+    function updateMinuteSelectState() {
+
+        const hours = Number(hourSelect.value);
+
+        if (hours > 0) {
+            minuteSelect.value = "0";
+            minuteSelect.disabled = true;
+        } else {
+            minuteSelect.disabled = false;
+        }
+    }
+
+    hourSelect.addEventListener("change", updateMinuteSelectState);
+
+    updateMinuteSelectState();    
+
 }
 
 const addDateButton = document.getElementById("addDate");
@@ -473,6 +489,24 @@ async function saveSettings() {
   if (config === null) {
     return;
   }
+
+  const irregularMinutes = [25, 35, 40, 45, 50, 55];
+
+  if (
+    config.intervalHours === 0 &&
+    irregularMinutes.includes(config.intervalMinutes)
+  ) {
+
+    const proceed = confirm(
+      `${config.intervalMinutes}分間隔は、GitHub Actionsの仕様上、` +
+      `一定間隔では実行されません。\n\n` +
+      `この設定で保存しますか？`
+    );
+
+    if (!proceed) {
+      return;
+    }
+  }  
 
   const response = await fetch("/settings", {
     method: "POST",
