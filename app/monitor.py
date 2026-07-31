@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from app.notify import notify
 import json
 import time
@@ -247,7 +248,9 @@ def main():
                     history.insert(
                         0,
                         {
-                            "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                            "time": datetime.now(
+                                ZoneInfo("Asia/Tokyo")
+                            ).strftime("%Y-%m-%d %H:%M:%S"),
                             "date": checkin_text,
                             "hotel": hotel_name,
                             "room": room_display,
@@ -272,9 +275,9 @@ def main():
                 state[key] = {
                     "remaining": result["remaining"],
                     "price": result["price"],
-                    "last_checked": datetime.now().isoformat(
-                        timespec="seconds"
-                    ),
+                    "last_checked": datetime.now(
+                        ZoneInfo("Asia/Tokyo")
+                    ).isoformat(timespec="seconds"),
                 }
 
             time.sleep(1)
@@ -318,7 +321,9 @@ def build_message(
         f"({weekdays[checkout.weekday()]})"
     )
 
-    notify_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    notify_time = datetime.now(
+        ZoneInfo("Asia/Tokyo")
+    ).strftime("%Y-%m-%d %H:%M:%S")
 
     if result["smoking"] == "禁煙":
         smoking_icon = "🚭"

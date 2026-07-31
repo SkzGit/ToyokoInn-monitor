@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 import json
+import re
 import logging
 import subprocess
 import shutil
@@ -21,6 +22,7 @@ app = Flask(__name__)
 BASE_DIR = Path(__file__).resolve().parent
 
 CONFIG_FILE = BASE_DIR / "config" / "settings.json"
+WORKFLOW_FILE = Path(".github/workflows/monitor.yml")
 HISTORY_FILE = BASE_DIR / "data" / "history.json"
 STATE_FILE = BASE_DIR / "data" / "state.json"
 
@@ -240,9 +242,38 @@ def monitor_status():
         "running": running
     }
 
+def update_workflow_cron():
+
+    settings = load_settings_file()
+
+    hours = settings.get("intervalHours", 0)
+    minutes = settings.get("intervalMinutes", 0)
+
+    if hours == 0 and minutes == 0:
+        return
+
+    if hours > 0:
+        cron = f"{minutes} */{hours} * * *"
+    else:
+        cron = f"*/{minutes} * * * *"
+
+    text = WORKFLOW_FILE.read_text(encoding="utf-8")
+
+    text = re.sub(
+        r'cron:\s*".*"',
+        f'cron: "{cron}"',
+        text,
+    )
+
+    WORKFLOW_FILE.write_text(
+        text,
+        encoding="utf-8",
+    )
+
 @app.post("/git-push")
 def git_push():
     try:
+        update_workflow_cron()
         git = find_git()
 
         add = run_git(git, "add", ".")

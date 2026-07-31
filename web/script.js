@@ -222,10 +222,10 @@ function initializeIntervalSelects() {
 
     hourSelect.innerHTML = createNumberOptions(23, 0, 0);
 
-    const minuteValues = Array.from({ length: 60 }, (_, i) => i);
+    const minuteValues = Array.from({ length: 60 / 5 }, (_, i) => i * 5);
 
     minuteSelect.innerHTML = minuteValues.map(m => `
-        <option value="${m}" ${m === 30 ? "selected" : ""}>
+        <option value="${m}" ${m === 0 ? "selected" : ""}>
             ${m}
         </option>
     `).join("");
@@ -555,7 +555,7 @@ async function loadSettingsFromServer() {
         config.intervalHours ?? 0;
 
     document.getElementById("intervalMinutes").value =
-        config.intervalMinutes ?? 30;
+        config.intervalMinutes ?? 0;
 
     restoreConfig(config);
 

@@ -1,10 +1,10 @@
 {
     "version": 1,
     "intervalHours": 0,
-    "intervalMinutes": 2,
+    "intervalMinutes": 15,
     "dates": [
         {
-            "date": "2026-08-18",
+            "date": "2026-08-24",
             "collapsed": false,
             "nights": 1,
             "people": 2,
@@ -18,7 +18,7 @@
             ]
         },
         {
-            "date": "2026-08-19",
+            "date": "2026-08-25",
             "collapsed": false,
             "nights": 1,
             "people": 2,
@@ -32,7 +32,7 @@
             ]
         },
         {
-            "date": "2026-08-20",
+            "date": "2026-08-26",
             "collapsed": false,
             "nights": 1,
             "people": 2,
