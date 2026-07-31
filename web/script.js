@@ -640,7 +640,20 @@ async function startMonitor() {
     const result = await response.json();
 
     if (result.result === "ok") {
+
+        const pushResponse = await fetch("/git-push", {
+            method: "POST"
+        });
+
+        const pushResult = await pushResponse.json();
+
+        if (!pushResult.success) {
+            alert(pushResult.message);
+            return;
+        }
+
         alert("監視を開始しました");
+
         updateMonitorStatus();
         updateMonitorLog();
         updateHistory();
@@ -664,9 +677,20 @@ async function stopMonitoring() {
 
   if (result.result === "ok") {
 
-    alert("監視を停止しました");
+      const pushResponse = await fetch("/git-push", {
+          method: "POST"
+      });
 
-    updateMonitorStatus();
+      const pushResult = await pushResponse.json();
+
+      if (!pushResult.success) {
+          alert(pushResult.message);
+          return;
+      }
+
+      alert("監視を停止しました");
+
+      updateMonitorStatus();
 
   } else if (result.result === "not_running") {
 
