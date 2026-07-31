@@ -1,13 +1,13 @@
 {
     "version": 1,
-    "intervalHours": 1,
-    "intervalMinutes": 0,
+    "intervalHours": 0,
+    "intervalMinutes": 2,
     "dates": [
         {
-            "date": "2026-08-04",
+            "date": "2026-08-17",
             "collapsed": false,
             "nights": 1,
-            "people": 4,
+            "people": 2,
             "rooms": 1,
             "candidates": [
                 {
