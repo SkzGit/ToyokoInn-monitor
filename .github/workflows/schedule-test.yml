@@ -2,7 +2,7 @@ name: Schedule Test
 
 on:
   schedule:
-    - cron: "37 6 * * *"
+    - cron: "7,17,27,37,47,57 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -11,3 +11,5 @@ jobs:
     steps:
       - name: Test
         run: echo "Scheduled workflow works"
+
+# schedule resync test
