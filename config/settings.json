@@ -4,43 +4,139 @@
     "intervalMinutes": 5,
     "dates": [
         {
-            "date": "2026-08-24",
+            "date": "2026-08-13",
             "collapsed": false,
             "nights": 1,
             "people": 2,
             "rooms": 1,
             "candidates": [
                 {
-                    "hotelId": "00097",
-                    "roomSearch": "ツイン",
+                    "hotelId": "00244",
+                    "roomSearch": "ファミリーツインA",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00244",
+                    "roomSearch": "ファミリーツインB",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00244",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00133",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00134",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00238",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00230",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00245",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00245",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00229",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00284",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00235",
+                    "roomSearch": "デラックスツイン",
                     "smoking": "指定なし"
                 }
             ]
         },
         {
-            "date": "2026-08-25",
+            "date": "2026-08-14",
             "collapsed": false,
             "nights": 1,
             "people": 2,
             "rooms": 1,
             "candidates": [
                 {
-                    "hotelId": "00097",
-                    "roomSearch": "ツイン",
+                    "hotelId": "00244",
+                    "roomSearch": "ファミリーツインA",
                     "smoking": "指定なし"
-                }
-            ]
-        },
-        {
-            "date": "2026-08-26",
-            "collapsed": false,
-            "nights": 1,
-            "people": 2,
-            "rooms": 1,
-            "candidates": [
+                },
                 {
-                    "hotelId": "00097",
-                    "roomSearch": "ツイン",
+                    "hotelId": "00244",
+                    "roomSearch": "ファミリーツインB",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00244",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00133",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00134",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00238",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00230",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00245",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00245",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00229",
+                    "roomSearch": "ファミリーツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00284",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
+                    "hotelId": "00235",
+                    "roomSearch": "デラックスツイン",
                     "smoking": "指定なし"
                 }
             ]
