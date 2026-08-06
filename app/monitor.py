@@ -203,6 +203,24 @@ def main():
                 print("空室なし")
                 write_log(f"{hotel_name}｜{room_display}｜空室なし")
 
+                # 空室がなくなったので、この候補の通知状態をリセットする
+                prefix = "|".join([
+                    stay["date"],
+                    str(stay["nights"]),
+                    candidate["hotelId"],
+                    candidate["roomSearch"],
+                ])
+
+                remove_keys = [
+                    k for k in list(state.keys())
+                    if k.startswith(prefix + "|")
+                ]
+
+                for k in remove_keys:
+                    del state[k]
+
+                continue
+
             for result in results:
 
                 key = "|".join([
