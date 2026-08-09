@@ -36,6 +36,11 @@
                     "smoking": "指定なし"
                 },
                 {
+                    "hotelId": "00231",
+                    "roomSearch": "デラックスツイン",
+                    "smoking": "指定なし"
+                },
+                {
                     "hotelId": "00229",
                     "roomSearch": "ファミリーツイン",
                     "smoking": "指定なし"
